@@ -10,10 +10,10 @@ function quicksort(array $array) {
         var_dump($array);
 
         // sub-array of all the elements less than the pivot
-        $less = array_filter(array_slice($array, 1), function($el) use ($pivot) { return $el <= $pivot; });
+        $less = array_values(array_filter(array_slice($array, 1), function($el) use ($pivot) { return $el <= $pivot; }));
 
         // sub-array of all the elements greater than the pivot
-        $greater = array_filter(array_slice($array, 1), function($el) use ($pivot) { return $el > $pivot; });
+        $greater = array_values(array_filter(array_slice($array, 1), function($el) use ($pivot) { return $el > $pivot; }));
         return array_merge(quicksort($less), [$pivot], quicksort($greater));
   }
 }
